@@ -1,0 +1,149 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage1.master.vb" Inherits="MasterPage1" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Ministerio de Trabajo de Cordoba :: Documentacion Laboral </title>
+    <link rel="stylesheet" type="text/css" href="Css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="Css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="Css/cssDavid.css" />
+    <link href="font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-3.1.1.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-custom.css" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+
+    <script src='<%=ResolveClientUrl("~/Js/jquery-1.11.2.min.js") %>' type="text/javascript"></script>
+    <script src='<%=ResolveClientUrl("~/Js/bootstrap.min.js") %>' type="text/javascript"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   
+</head>
+<body onload="history.go(+1)">
+    <div id="top"></div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="TopBar"> 
+    <div class="container"> 
+        <div class="navbar-header">
+            <a class="navbar-brand logo-center" href="http://trabajo.cba.gov.ar/index.aspx">
+                <asp:Image ID="logo" CssClass="logo" ImageUrl="~/Images/logo.png" runat="server" alt="Ministerio de Trabajo digital" />
+            </a>  
+        </div>
+
+        <!-- Inicio Menu -->
+        <div class="navbar-right" id="navegacion-fm">
+            <div class="dropdown custom nav navbar-nav">
+                <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background: none; border: 0; color:#fff;">
+                    <span id="lblEmpresaBefore" style="">Empresa:</span>
+                    <asp:Label ID="lblEmpresa" runat="server" ForeColor="#ffffff" Style="font-size: 14px; margin-right: 10px; font-weight: 500;" Text="NOMBRE DE LA EMPRESA"></asp:Label>                     
+                    <i class="fa fa-bars fa-lg" style="font-size: 21px"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                <!--<li><a href="#">Ver Perfil</a></li>
+                    <li><a href="#">Configuración de Seguridad</a></li>-->
+                    <li><asp:HyperLink ID="HyperLink2" runat="server" Text="Cerrar Sesion" CssClass="last" NavigateUrl="~/CerrarSession.aspx"></asp:HyperLink></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+   
+    <div id="wrap">
+        <form class="container animated zoomIn" runat="server">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </form>
+    </div>
+
+    <%--<footer id="footer" class="footer text-center">
+    <!--<div class="container footer-container">g.v. 14/10/2015 clase footer-container comentada, verificar ancho en frmPantallaInicio -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 col-md-6">
+                    <h4> Novedades</h4>
+                    <ul>
+                        <li>
+                            <asp:HyperLink ID="Hyperlink6" NavigateUrl="~/Blog/ministro-en-planta-volswagen.aspx" runat="server">
+                                <i class="fa fa-chevron-right"></i>Brito visitó la planta de Volkswagen Córdoba
+                            </asp:HyperLink>
+                        </li>
+                        <li> 
+                            <asp:HyperLink ID="HyperLink3" NavigateUrl="~/Blog/contra-trabajo-infantil.aspx" runat="server">
+                                <i class="fa fa-chevron-right"></i>Córdoba se suma al Día Mundial Contra el Trabajo Infantil
+                            </asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink4" NavigateUrl="~/Blog/provincia-auditara-cumbre.aspx" runat="server">
+                                <i class="fa fa-chevron-right"></i>
+                                La Provincia ayudará a La Cumbre y auditará sus finanzas
+                            </asp:HyperLink>
+                        </li>
+                        <li>
+                           <asp:HyperLink ID="Hyperlink5" NavigateUrl="~/Blog/cambio-hojas-moviles.aspx" runat="server">
+                                <i class="fa fa-chevron-right"></i>Cambio de Libro Manual a Hojas Moviles
+                            </asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="Hyperlink1" NavigateUrl="http://comercioyjusticia.info/blog/profesionales/cordoba-despapeliza-libros-sueldos-desde-mayo/#content" runat="server" Target="_blank">
+                                <i class="fa fa-chevron-right"></i>Córdoba Despapeliza Libros Sueldos
+                            </asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-lg-3 col-md-3">
+                    <h4>Aplicativos</h4>
+                    <ul>
+                         <li><a href="frmMiRegistroLaboral.aspx"><i class="fa fa-chevron-right"></i>Mi registro Laboral</a></li>
+                        <li><a href="frmConstanciaEmpleador.aspx"><i class="fa fa-chevron-right"></i>Constancia de Inscripción Laboral</a></li>
+                        <li><a href="frmVencimientos.aspx"><i class="fa fa-chevron-right"></i>Vencimientos</a></li>
+                        <li><a href="frmNumerosDelMinisterio.aspx"><i class="fa fa-chevron-right"></i>Estadísticas</a></li>
+                        <li><a href="frmFaq.aspx"><i class="fa fa-chevron-right"></i>Preguntas Frecuentes</a></li>  
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-lg-3 col-md-3">
+                    <h4>Links de interés</h4>
+                    <ul>
+                        <li><a href="http://www.cba.gov.ar/" target="_blank"><i class="fa fa-chevron-right"></i>Gobierno de la Provincia</a></li>
+                        <li>
+                            <a href="http://www.trabajo.gob.ar/" target="_blank"><i class="fa fa-chevron-right"></i>Ministerio de Trabajo, Empleo y Seguridad Social de la Nación </a>
+                        </li>
+                        <li><a href="http://www.afip.gob.ar/home/index.html" target="_blank"><i class="fa fa-chevron-right"></i>AFIP</a></li>
+                        <li><a href="http://www.srt.gob.ar/" target="_blank"><i class="fa fa-chevron-right"></i>Super Intendencia de Riesgos de Trabajo</a></li>    
+                        <li><a href="frmLinkInteres.aspx"><i class="fa fa-chevron-right"></i>Más...</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottom-bar"> 
+            <div class="container" style="display: table;">
+                <p>
+                    <span>Ministerio de Trabajao de Córdoba</span> 
+                    todos los derecheos Reservados.
+                </p>
+                <a href="#top" id="goTop">VOLVER AL INICIO<i class="fa fa-arrow-circle-up fa-large"></i></a>
+            </div>
+        </div>
+   </footer>--%>
+
+    <script type="text/javascript">
+        $('a[href^="#"]').on('click', function (event) {
+            var target = $($(this).attr('href'));
+            if (target.length) {
+                event.preventDefault();
+                $('html, body').animate({ scrollTop: target.offset().top }, 1000);
+            }
+        });
+        //@ sourceURL=pen.js
+    </script>
+
+
+</body>
+</html>
